@@ -36,10 +36,16 @@ namespace Smartstore.Core.Catalog.Attributes
     [Index(nameof(Gtin), Name = "IX_Gtin")]
     [Index(nameof(ManufacturerPartNumber), Name = "IX_ManufacturerPartNumber")]
     [Index(nameof(StockQuantity), nameof(AllowOutOfStockOrders), Name = "IX_StockQuantity_AllowOutOfStockOrders")]
+    [Index(nameof(HashValue), Name = "IX_ProductVariantAttributeCombination_HashValue")]
     public partial class ProductVariantAttributeCombination : BaseEntity, IAttributeAware
     {
         private ProductVariantAttributeSelection _attributeSelection;
         private string _rawAttributes;
+
+        public ProductVariantAttributeCombination()
+        {
+
+        }
 
         /// <summary>
         /// Gets or sets the product identifier.
@@ -159,12 +165,21 @@ namespace Smartstore.Core.Catalog.Attributes
             {
                 _rawAttributes = value;
                 _attributeSelection = null;
+                _hash = AttributeSelection.Hash;
             }
         }
 
         [NotMapped]
         public ProductVariantAttributeSelection AttributeSelection
             => _attributeSelection ??= new(RawAttributes);
+
+        private int? _hash = null;
+
+        public int HashValue
+        {
+            get => _hash ??= AttributeSelection.Hash;
+            set => _hash = value;
+        }
 
         /// <summary>
         /// Gets or sets the stock quantity.

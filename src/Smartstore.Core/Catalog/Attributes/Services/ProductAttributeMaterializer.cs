@@ -324,7 +324,15 @@ namespace Smartstore.Core.Catalog.Attributes
                 using var step = _chronometer.Step("FindAttributeCombination");
 
                 selection = await NormalizeSelectionAsync(selection);
+                
+                var combination = await _db.ProductVariantAttributeCombinations
+                                    .AsNoTracking()
+                                    .Where(p => p.ProductId == productId)
+                                    .Where(p => p.HashValue == selection.Hash)
+                                    .FirstOrDefaultAsync();
+                return combination;
 
+                /*
                 var query = from x in _db.ProductVariantAttributeCombinations.AsNoTracking()
                             where x.ProductId == productId
                             select x;
@@ -342,7 +350,7 @@ namespace Smartstore.Core.Catalog.Attributes
                 // is way faster than materializing all combinations just to scan for the selection.
                 // Anyway, MARS is enabled now, so who cares.
                 var combinations = query.AsAsyncEnumerable();
-
+                
                 ProductVariantAttributeCombination result = null;
 
                 int index = 0;
@@ -356,6 +364,9 @@ namespace Smartstore.Core.Catalog.Attributes
                         break;
                     }
                 }
+
+                var resultHash = result?.HashValue ?? 0;
+                var selectionHash = selection.Hash;
 
                 if (result != null && reverseScan == null)
                 {
@@ -377,6 +388,8 @@ namespace Smartstore.Core.Catalog.Attributes
                 }
 
                 return result;
+                */
+
             });
 
             return combination;
@@ -620,7 +633,7 @@ namespace Smartstore.Core.Catalog.Attributes
         }
 
         private async Task<ProductVariantAttributeCombination> FindCombinationByAttributeSelectionAsync(
-            ProductVariantAttributeSelection selection, 
+            ProductVariantAttributeSelection selection,
             ICollection<ProductVariantAttributeCombination> combinationsLookup)
         {
             if (!combinationsLookup.Any())

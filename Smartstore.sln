@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartstore", "src\Smartstor
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{E5C1AA43-6B44-4EFA-8DE9-6070EE007CE3}"
 	ProjectSection(SolutionItems) = preProject
+		src\Smartstore.Modules\Directory.Build.props = src\Smartstore.Modules\Directory.Build.props
+		src\Smartstore.Modules\Directory.Build.targets = src\Smartstore.Modules\Directory.Build.targets
 		src\Smartstore.Modules\module.schema.json = src\Smartstore.Modules\module.schema.json
 	EndProjectSection
 EndProject
@@ -82,6 +84,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartstore.Data.PostgreSql", "src\Smartstore.Data\Smartstore.Data.PostgreSql\Smartstore.Data.PostgreSql.csproj", "{1A016177-D0EA-49AD-9BD5-BAD99D9D08F9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartstore.Data.Sqlite", "src\Smartstore.Data\Smartstore.Data.Sqlite\Smartstore.Data.Sqlite.csproj", "{32683DB7-C20D-4ABD-BE90-569168B2A68F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "STREETEC.BBSUnlimited", "src\Smartstore.Modules\STREETEC.BBSUnlimited-sym\STREETEC.BBSUnlimited.csproj", "{CDDE4471-E18D-4FD2-80D8-2A6AF560277F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "STREETEC.Theme", "src\Smartstore.Modules\STREETEC.Theme-sym\STREETEC.Theme.csproj", "{D1744357-9B03-4583-81B7-7413F69E6A51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -270,6 +276,18 @@ Global
 		{32683DB7-C20D-4ABD-BE90-569168B2A68F}.DebugNoRazorCompile|Any CPU.Build.0 = DebugNoRazorCompile|Any CPU
 		{32683DB7-C20D-4ABD-BE90-569168B2A68F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32683DB7-C20D-4ABD-BE90-569168B2A68F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDDE4471-E18D-4FD2-80D8-2A6AF560277F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDDE4471-E18D-4FD2-80D8-2A6AF560277F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDDE4471-E18D-4FD2-80D8-2A6AF560277F}.DebugNoRazorCompile|Any CPU.ActiveCfg = DebugNoRazorCompile|Any CPU
+		{CDDE4471-E18D-4FD2-80D8-2A6AF560277F}.DebugNoRazorCompile|Any CPU.Build.0 = DebugNoRazorCompile|Any CPU
+		{CDDE4471-E18D-4FD2-80D8-2A6AF560277F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDDE4471-E18D-4FD2-80D8-2A6AF560277F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1744357-9B03-4583-81B7-7413F69E6A51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1744357-9B03-4583-81B7-7413F69E6A51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1744357-9B03-4583-81B7-7413F69E6A51}.DebugNoRazorCompile|Any CPU.ActiveCfg = DebugNoRazorCompile|Any CPU
+		{D1744357-9B03-4583-81B7-7413F69E6A51}.DebugNoRazorCompile|Any CPU.Build.0 = DebugNoRazorCompile|Any CPU
+		{D1744357-9B03-4583-81B7-7413F69E6A51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1744357-9B03-4583-81B7-7413F69E6A51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -301,6 +319,8 @@ Global
 		{0C26B088-A8F6-42E8-AB8D-D9D297FDD72C} = {E5C1AA43-6B44-4EFA-8DE9-6070EE007CE3}
 		{1A016177-D0EA-49AD-9BD5-BAD99D9D08F9} = {82A38DDA-C944-4C15-AF43-86732F8ED15A}
 		{32683DB7-C20D-4ABD-BE90-569168B2A68F} = {82A38DDA-C944-4C15-AF43-86732F8ED15A}
+		{CDDE4471-E18D-4FD2-80D8-2A6AF560277F} = {E5C1AA43-6B44-4EFA-8DE9-6070EE007CE3}
+		{D1744357-9B03-4583-81B7-7413F69E6A51} = {E5C1AA43-6B44-4EFA-8DE9-6070EE007CE3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A0A0B995-5D0B-458E-BCC0-1071B76949D1}

@@ -67,7 +67,7 @@
                                 {
                                     var bundleItem = item.BundleItems[j];
 
-                                    <a sm-if="bundleItem.ImageModel.HasImage()" href="@bundleItem.ProductUrl" title="@bundleItem.ProductName">
+                                    <a sm-if="bundleItem.ImageModel?.HasImage() == true" href="@bundleItem.ProductUrl" title="@bundleItem.ProductName">
                                         <img sm-model="bundleItem.ImageModel" />
                                     </a>
                                     <i sm-if="(j + 1) < bundlelength" class="fa fa-plus"></i>

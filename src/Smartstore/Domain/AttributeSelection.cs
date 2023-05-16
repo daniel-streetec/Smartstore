@@ -74,6 +74,7 @@ namespace Smartstore.Domain
         public void AddAttribute(int attributeId, IEnumerable<object> values)
         {
             _attributes.Attributes.AddRange(attributeId, values);
+            _hash = GetHashCode();
             _dirty = true;
         }
 
@@ -87,6 +88,7 @@ namespace Smartstore.Domain
             Guard.NotNull(value, nameof(value));
 
             _attributes.Attributes.Add(attributeId, value);
+            _hash = GetHashCode();
             _dirty = true;
         }
 
@@ -97,6 +99,7 @@ namespace Smartstore.Domain
         public void RemoveAttribute(int attributeId)
         {
             _attributes.Attributes.RemoveAll(attributeId);
+            _hash = GetHashCode();
             _dirty = true;
         }
 
@@ -110,7 +113,7 @@ namespace Smartstore.Domain
             {
                 _attributes.Attributes.RemoveAll(attributeId);
             }
-
+            _hash = GetHashCode();
             _dirty = true;
         }
 
@@ -124,6 +127,7 @@ namespace Smartstore.Domain
             Guard.NotNull(value, nameof(value));
 
             _attributes.Attributes.Remove(attributeId, value);
+            _hash = GetHashCode();
             _dirty = true;
         }
 
@@ -134,6 +138,7 @@ namespace Smartstore.Domain
         {
             _attributes.Attributes.Clear();
             _attributes.CustomAttributes.Clear();
+            _hash = GetHashCode();
             _dirty = true;
         }
 
@@ -161,6 +166,7 @@ namespace Smartstore.Domain
                 _isJson = true;
                 _dirty = false;
                 _rawAttributes = json;
+                _hash = GetHashCode();
 
                 return json;
             }
@@ -212,6 +218,7 @@ namespace Smartstore.Domain
             _isJson = false;
             _dirty = false;
             _rawAttributes = root.ToString(SaveOptions.DisableFormatting);
+            _hash = GetHashCode();
 
             return _rawAttributes;
         }
@@ -400,6 +407,17 @@ namespace Smartstore.Domain
             return combiner.CombinedHash;
         }
 
+        private int _hash = 0;
+
+        public int Hash
+        {
+            get
+            {
+                if(_hash == 0) _hash = GetHashCode();
+                return _hash;
+            }
+        }
+
         public override bool Equals(object obj)
         {
             return Equals(obj as AttributeSelection);
@@ -421,6 +439,8 @@ namespace Smartstore.Domain
             {
                 return true;
             }
+
+            return this.Hash == other.Hash;
 
             // Check attributes.
             var map1 = _attributes.Attributes;
